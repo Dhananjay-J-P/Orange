@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="orange.user.impl.User" table="USER_DETAILS">
+		<id name="username" type="string" column="username">
+		</id>
+		<property name="password" column="password" type="string" />
+		
+		<property name="firstName" column="name" type="string" />
+		<property name="lastName" column="last_name" type="string" />
+		<property name="contactNumber" column="contact" type="string" />
+		
+		<property name="emailId" column="emailid" type="string" />
+		
+		<list name="bookings" table="CUST_BOOKING_DETAILS" cascade="persist"
+			inverse="true">
+			<key column="ID_CUST_BOOK" />
+			<index column="username"></index>
+			<one-to-many class="controller.query.model.BookingModel" />
+		</list>
+	</class>
+	<class name="orange.bus.Bus" table="BUS_DETAILS">
+		<id name="busid" type="string" column="busid">
+		</id>
+		<property name="busNameCode" column="bus_name_code" type="string" />
+		<property name="operatedBy" column="operated_by" type="string" />
+		<property name="busType" column="bus_type" type="string" />
+		<property name="srcStop" column="src_stop" type="string" />
+		<property name="destStop" column="dest_stop" type="string" />
+		<property name="busTime" column="bust_time" type="string" />
+		<property name="busRoute" column="bus_route" type="string" />
+		<property name="busContact" column="bus_contact" type="string" />
+		<property name="chargePerSeat" column="charge_per_seat" type="string" />
+		<property name="noOfSeats" column="No_of_seats" type="string" />
+	</class>
+
+	<class name="orange.stops.Stops" table="stop_details">
+		<id name="stopId" type="string" column="stop_id">
+		</id>
+		<property name="stopMessageCode" column="stop_code" type="string" />
+	</class>
+
+	<class name="orange.bus.seats.Seat" table="SEAT_BUS_BOOKING_STATUS">
+		<composite-id>
+			<key-property name="busId" column="busid" type="string" />
+			<key-property name="travelDate" column="travel_date"
+				type="string" />
+			<key-property name="seatId" column="seatno" type="string" />
+		</composite-id>
+		<property name="status" column="status" type="string" />
+	</class>
+
+	<class name="controller.query.model.BookingModel" table="BOOKING_DETAILS">
+		<id name="bookingId" type="string" column="BOOKING_ID">
+		</id>
+		<property name="busFrom" column="START_POINT" type="string" />
+		<property name="busTo" column="END_POINT" type="string" />
+		<property name="travelDate" column="TRAVEL_DATE" type="string" />
+		<property name="busId" column="BUSID" type="string" />
+		<property name="noOfSeats" column="NO_OF_SEATS" type="int" />
+		<property name="busTime" column="bust_time" type="string" />
+		<many-to-one name="user" fetch="select" class="orange.user.impl.User"
+			not-null="true">
+			<column name="ID_CUST_BOOK" not-null="true" />
+		</many-to-one>
+	</class>
+
+</hibernate-mapping>

@@ -1,0 +1,189 @@
+select * from TABLE_USER;
+select * from TABLE_USER_BOOKING_DETAILS;
+select * from TABLE_ROLE;
+select * from TABLE_BUS_DETAILS;
+select * from TABLE_STOPS;
+select * from TABLE_BUS_SEAT_BOOKING_STATUS;
+
+
+delete from  TABLE_BUS_SEAT_BOOKING_STATUS;
+delete from TABLE_USER_BOOKING_DETAILS;
+delete from TABLE_BUS_DETAILS;
+delete from TABLE_ROLE;
+delete from TABLE_STOPS;
+delete from TABLE_USER;
+
+
+
+alter table table_user add column enabled integer not null default 1;
+
+INSERT INTO TABLE_ROLE VALUES (1,'ROLE_ADMIN', 'ROLE_ADMIN');
+INSERT INTO TABLE_ROLE VALUES (2,'ROLE_USER', 'ROLE_USER');
+insert into TABLE_USER values ('user','user','Rich Dhananjay','conqueror','9930007916','Dhananjaypatade0101@gmail.com',1,1);
+insert into TABLE_BUS_DETAILS values ('101','101.name','101.operatedBy','101.type','TH1','PN1','17.00','9930007916','101.Route','600.00','32');
+insert into TABLE_BUS_DETAILS values ('102','102.name','102.operatedBy','102.type','TH1','PN1','19.00','9930007916','102.Route','550.00','32');
+insert into TABLE_STOPS values('TH1','stpcde.th.vandana');
+insert into TABLE_STOPS values('PN1','stpcde.pn.swargate');
+
+
+insert into TABLE_BUS_SEAT_BOOKING_STATUS values ('101','2017-05-10','A','Available');
+insert into TABLE_BUS_SEAT_BOOKING_STATUS values ('101','2017-05-10','B','Available');
+insert into TABLE_BUS_SEAT_BOOKING_STATUS values ('101','2017-05-10','C','Available');
+insert into TABLE_BUS_SEAT_BOOKING_STATUS values ('101','2017-05-10','D','Available');
+insert into TABLE_BUS_SEAT_BOOKING_STATUS values ('101','2017-05-10','E','Available');
+insert into TABLE_BUS_SEAT_BOOKING_STATUS values ('101','2017-05-10','F','Available');
+insert into TABLE_BUS_SEAT_BOOKING_STATUS values ('101','2017-05-10','G','Available');
+insert into TABLE_BUS_SEAT_BOOKING_STATUS values ('101','2017-05-10','H','Available');
+insert into TABLE_BUS_SEAT_BOOKING_STATUS values ('101','2017-05-10','I','Available');
+insert into TABLE_BUS_SEAT_BOOKING_STATUS values ('101','2017-05-10','J','Available');
+insert into TABLE_BUS_SEAT_BOOKING_STATUS values ('101','2017-05-10','K','Available');
+insert into TABLE_BUS_SEAT_BOOKING_STATUS values ('101','2017-05-10','L','Available');
+insert into TABLE_BUS_SEAT_BOOKING_STATUS values ('101','2017-05-10','M','Available');
+insert into TABLE_BUS_SEAT_BOOKING_STATUS values ('101','2017-05-10','N','Available');
+insert into TABLE_BUS_SEAT_BOOKING_STATUS values ('101','2017-05-10','O','Available');
+insert into TABLE_BUS_SEAT_BOOKING_STATUS values ('101','2017-05-10','P','Available');
+insert into TABLE_BUS_SEAT_BOOKING_STATUS values ('101','2017-05-10','Q','Available');
+insert into TABLE_BUS_SEAT_BOOKING_STATUS values ('101','2017-05-10','R','Available');
+insert into TABLE_BUS_SEAT_BOOKING_STATUS values ('101','2017-05-10','S','Available');
+insert into TABLE_BUS_SEAT_BOOKING_STATUS values ('101','2017-05-10','T','Available');
+insert into TABLE_BUS_SEAT_BOOKING_STATUS values ('101','2017-05-10','1','Available');
+insert into TABLE_BUS_SEAT_BOOKING_STATUS values ('101','2017-05-10','2','Available');
+insert into TABLE_BUS_SEAT_BOOKING_STATUS values ('101','2017-05-10','3','Available');
+insert into TABLE_BUS_SEAT_BOOKING_STATUS values ('101','2017-05-10','4','Available');
+insert into TABLE_BUS_SEAT_BOOKING_STATUS values ('101','2017-05-10','5','Available');
+insert into TABLE_BUS_SEAT_BOOKING_STATUS values ('101','2017-05-10','6','Available');
+insert into TABLE_BUS_SEAT_BOOKING_STATUS values ('101','2017-05-10','7','Available');
+insert into TABLE_BUS_SEAT_BOOKING_STATUS values ('101','2017-05-10','8','Available');
+insert into TABLE_BUS_SEAT_BOOKING_STATUS values ('101','2017-05-10','9','Available');
+insert into TABLE_BUS_SEAT_BOOKING_STATUS values ('101','2017-05-10','10','Available');
+insert into TABLE_BUS_SEAT_BOOKING_STATUS values ('101','2017-05-10','11','Available');
+insert into TABLE_BUS_SEAT_BOOKING_STATUS values ('101','2017-05-10','12','Available');
+insert into TABLE_BUS_SEAT_BOOKING_STATUS values ('101','2017-05-10','13','Available');
+insert into TABLE_BUS_SEAT_BOOKING_STATUS values ('101','2017-05-10','14','Available');
+insert into TABLE_BUS_SEAT_BOOKING_STATUS values ('101','2017-05-10','15','Available');
+insert into TABLE_BUS_SEAT_BOOKING_STATUS values ('101','2017-05-10','16','Available');
+insert into TABLE_BUS_SEAT_BOOKING_STATUS values ('101','2017-05-10','17','Available');
+insert into TABLE_BUS_SEAT_BOOKING_STATUS values ('101','2017-05-10','18','Available');
+insert into TABLE_BUS_SEAT_BOOKING_STATUS values ('101','2017-05-10','19','Available');
+insert into TABLE_BUS_SEAT_BOOKING_STATUS values ('101','2017-05-10','20','Available');
+
+----------------------------------
+
+
+
+create table user_details 
+(
+username varchar(15) not null,
+password varchar(15),
+name varchar(15),
+last_name varchar(15),
+contact varchar(15),
+emailid varchar(50),
+enabled integer NOT NULL DEFAULT 1 ,
+
+PRIMARY KEY (username)
+);
+
+
+
+CREATE TABLE user_roles (
+  user_role_id integer NOT NULL ,
+  username varchar(15) NOT NULL,
+  role varchar(45) NOT NULL,
+    PRIMARY KEY (username),
+    FOREIGN KEY (username) REFERENCES user_details(username));
+
+INSERT INTO user_roles (user_role_id,username, role)
+VALUES (234,'user', 'ROLE_ADMIN');
+INSERT INTO user_roles (user_role_id,username, role)
+VALUES (123,'alex', 'ROLE_USER');
+
+create table bus_details (
+busid varchar(20),
+bus_name_code varchar(20),
+operated_by varchar(20),
+bus_type varchar(20),
+src_stop varchar(20),
+dest_stop varchar(20),
+bust_time varchar(10),
+bus_contact varchar(20),
+bus_route varchar(50),
+charge_per_seat varchar(10),
+No_of_seats varchar(3)
+);
+
+
+create table SEAT_BUS_BOOKING_STATUS (
+busid varchar(20),
+travel_date varchar(20),
+seatno varchar(20),
+status varchar(20)
+);
+
+insert into SEAT_BUS_BOOKING_STATUS values ('101','2017-04-30','A','Available');
+insert into SEAT_BUS_BOOKING_STATUS values ('101','2017-04-30','B','Available');
+insert into SEAT_BUS_BOOKING_STATUS values ('101','2017-04-30','C','Available');
+insert into SEAT_BUS_BOOKING_STATUS values ('101','2017-04-30','D','Available');
+insert into SEAT_BUS_BOOKING_STATUS values ('101','2017-04-30','E','Available');
+insert into SEAT_BUS_BOOKING_STATUS values ('101','2017-04-30','F','Available');
+insert into SEAT_BUS_BOOKING_STATUS values ('101','2017-04-30','G','Available');
+insert into SEAT_BUS_BOOKING_STATUS values ('101','2017-04-30','H','Available');
+insert into SEAT_BUS_BOOKING_STATUS values ('101','2017-04-30','I','Available');
+insert into SEAT_BUS_BOOKING_STATUS values ('101','2017-04-30','J','Available');
+insert into SEAT_BUS_BOOKING_STATUS values ('101','2017-04-30','K','Available');
+insert into SEAT_BUS_BOOKING_STATUS values ('101','2017-04-30','L','Available');
+insert into SEAT_BUS_BOOKING_STATUS values ('101','2017-04-30','M','Available');
+insert into SEAT_BUS_BOOKING_STATUS values ('101','2017-04-30','N','Available');
+insert into SEAT_BUS_BOOKING_STATUS values ('101','2017-04-30','O','Available');
+insert into SEAT_BUS_BOOKING_STATUS values ('101','2017-04-30','P','Available');
+insert into SEAT_BUS_BOOKING_STATUS values ('101','2017-04-30','Q','Available');
+insert into SEAT_BUS_BOOKING_STATUS values ('101','2017-04-30','R','Available');
+insert into SEAT_BUS_BOOKING_STATUS values ('101','2017-04-30','S','Available');
+insert into SEAT_BUS_BOOKING_STATUS values ('101','2017-04-30','T','Available');
+insert into SEAT_BUS_BOOKING_STATUS values ('101','2017-04-30','1','Available');
+insert into SEAT_BUS_BOOKING_STATUS values ('101','2017-04-30','2','Available');
+insert into SEAT_BUS_BOOKING_STATUS values ('101','2017-04-30','3','Available');
+insert into SEAT_BUS_BOOKING_STATUS values ('101','2017-04-30','4','Available');
+insert into SEAT_BUS_BOOKING_STATUS values ('101','2017-04-30','5','Available');
+insert into SEAT_BUS_BOOKING_STATUS values ('101','2017-04-30','6','Available');
+insert into SEAT_BUS_BOOKING_STATUS values ('101','2017-04-30','7','Available');
+insert into SEAT_BUS_BOOKING_STATUS values ('101','2017-04-30','8','Available');
+insert into SEAT_BUS_BOOKING_STATUS values ('101','2017-04-30','9','Available');
+insert into SEAT_BUS_BOOKING_STATUS values ('101','2017-04-30','10','Available');
+insert into SEAT_BUS_BOOKING_STATUS values ('101','2017-04-30','11','Available');
+insert into SEAT_BUS_BOOKING_STATUS values ('101','2017-04-30','12','Available');
+insert into SEAT_BUS_BOOKING_STATUS values ('101','2017-04-30','13','Available');
+insert into SEAT_BUS_BOOKING_STATUS values ('101','2017-04-30','14','Available');
+insert into SEAT_BUS_BOOKING_STATUS values ('101','2017-04-30','15','Available');
+insert into SEAT_BUS_BOOKING_STATUS values ('101','2017-04-30','16','Available');
+insert into SEAT_BUS_BOOKING_STATUS values ('101','2017-04-30','17','Available');
+insert into SEAT_BUS_BOOKING_STATUS values ('101','2017-04-30','18','Available');
+insert into SEAT_BUS_BOOKING_STATUS values ('101','2017-04-30','19','Available');
+insert into SEAT_BUS_BOOKING_STATUS values ('101','2017-04-30','20','Available');
+
+
+
+create table BOOKING_DETAILS (
+BOOKING_ID varchar(20) NOT NULL,
+BUSID varchar(20),
+START_POINT varchar(20),
+END_POINT varchar(20),
+TRAVEL_DATE varchar(20),
+USERID varchar(20),
+NO_OF_SEATS varchar(2),
+CONTACT_NO varchar(10),
+BOOKING_STATUS varchar(10),
+PAYMENT_STATUS varchar(10),
+PRIMARY KEY (BOOKING_ID)
+);
+
+create table STOP_DETAILS
+(stop_id varchar(20), stop_code varchar(20));
+
+insert into user_details values ('user','user','Rich Dhananjay','conqueror','9930007916','Dhananjaypatade0101@gmail.com','1');
+
+insert into bus_details values ('101','101.name','101.operatedBy','101.type','TH1','PN1','17.00','9930007916','101.Route','600.00','32');
+insert into bus_details values ('102','102.name','102.operatedBy','102.type','TH1','PN1','19.00','9930007916','102.Route','550.00','32');
+
+insert into stop_details values('TH1','stpcde.th.vandana');
+insert into stop_details values('PN1','stpcde.pn.swargate');
